@@ -7,9 +7,10 @@ interface props {
     placeholder?: string;
     type: string;
     onChange?: () => void;
+    onclick?: () => void;
 }
 
-const Input: React.FC<props> = ({ value, label, name, placeholder, type, onChange }) => (
+const Input: React.FC<props> = ({ value, label, name, placeholder, type, onChange, onclick }) => (
     <div className="form-group">
       {label && <label htmlFor="input-field">{label}</label>}
       <input
@@ -19,6 +20,7 @@ const Input: React.FC<props> = ({ value, label, name, placeholder, type, onChang
         className="form-control"
         placeholder={placeholder}
         onChange={onChange}
+        onClick={onclick}
       />
     </div>
   );
