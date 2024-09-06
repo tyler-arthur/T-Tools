@@ -3,6 +3,10 @@
 }
 
 .input-button {
-  min-width: 12rem;
-  min-height: 3rem;
+  min-width: 12em;
+  min-height: 3em;
+}
+
+.input-slider {
+  min-width: 40em;
 }

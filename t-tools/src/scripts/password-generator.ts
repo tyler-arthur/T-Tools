@@ -42,7 +42,7 @@ const generatePassword: any = (
         count = count - 1;
     }
 
-    return password;
+    return password.join('');
 }
 
 export default generatePassword;

@@ -7,11 +7,13 @@ interface props {
     placeholder?: string;
     type: string;
     className?: string;
-    onChange?: () => void;
-    onclick?: () => void;
+    min?: number;
+    max?: number;
+    onChange?: any;
+    onclick?: any;
 }
 
-const Input: React.FC<props> = ({ value, label, name, placeholder, type, className, onChange, onclick }) => (
+const Input: React.FC<props> = ({ value, label, name, placeholder, type, className, min, max, onChange, onclick }) => (
     <div className="form-group">
       {label && <label htmlFor="input-field">{label}</label>}
       <input
@@ -19,6 +21,8 @@ const Input: React.FC<props> = ({ value, label, name, placeholder, type, classNa
         value={value}
         name={name}
         className={className}
+        min={min}
+        max={max}
         placeholder={placeholder}
         onChange={onChange}
         onClick={onclick}

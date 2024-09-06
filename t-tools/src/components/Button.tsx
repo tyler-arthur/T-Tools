@@ -4,7 +4,7 @@ interface props {
     value?: any;
     className?: string;
     text?: string;
-    onclick?: () => void;
+    onclick?: any;
 }
 
 const Button: React.FC<props> = ({ value, text, className, onclick }) => (
