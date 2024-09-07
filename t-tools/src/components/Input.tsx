@@ -2,6 +2,7 @@ import React from "react";
 
 interface props {
     value?: any;
+    defaultValue?: any;
     label?: string;
     name?: string;
     placeholder?: string;
@@ -13,7 +14,7 @@ interface props {
     onclick?: any;
 }
 
-const Input: React.FC<props> = ({ value, label, name, placeholder, type, className, min, max, onChange, onclick }) => (
+const Input: React.FC<props> = ({ value, defaultValue, label, name, placeholder, type, className, min, max, onChange, onclick }) => (
     <div className="form-group">
       {label && <label htmlFor="input-field">{label}</label>}
       <input

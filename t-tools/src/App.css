@@ -5,6 +5,23 @@
 .input-button {
   min-width: 12em;
   min-height: 3em;
+  margin: 4px;
+}
+
+.flex-parent-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.password-field {
+  border-radius: 10px;
+  width: 60%;
+  height: 100px;
+  line-height: 100px;
+  text-align: center;
+  box-shadow: 5px 5px 5px 2px grey;
+  background-color: rgb(233, 233, 233);
 }
 
 .input-slider {

@@ -5,6 +5,7 @@ interface props {
     className?: string;
     text?: string;
     onclick?: any;
+    disabled?: boolean;
 }
 
 const Button: React.FC<props> = ({ value, text, className, onclick }) => (
@@ -14,6 +15,7 @@ const Button: React.FC<props> = ({ value, text, className, onclick }) => (
         value={value}
         className={className}
         onClick={onclick}
+        disabled={false}
       >{text}</button>
     </div>
   );

@@ -9,7 +9,7 @@ interface characterSelection {
 const numArr: Number[] = Array.from(Array(10).keys());
 const strNumArr: String[] = numArr.map(num => num.toString())
 
-const lowerCharArr: String[] = Array.from(Array(26).keys()).map(i => String.fromCharCode(i + 65));
+const lowerCharArr: String[] = Array.from(Array(26).keys()).map(i => String.fromCharCode(i + 97));
 
 const upperCharArr: String[] = lowerCharArr.map(char => char.toUpperCase());
 
@@ -33,7 +33,6 @@ const generatePassword: any = (
     if (upper) passwordSelectionArr.push.apply(passwordSelectionArr, upperCharArr);
     if (special) passwordSelectionArr.push.apply(passwordSelectionArr, specialCharArr);
 
-    
     const password: String[] = [];
 
     let count: number = size;
