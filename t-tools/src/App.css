@@ -6,6 +6,7 @@
   min-width: 12em;
   min-height: 3em;
   margin: 4px;
+  border-radius: 2px;
 }
 
 .flex-parent-center {

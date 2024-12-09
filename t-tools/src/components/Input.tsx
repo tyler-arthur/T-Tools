@@ -12,12 +12,15 @@ interface props {
     max?: number;
     onChange?: any;
     onclick?: any;
+    checked?: boolean;
+    id?: string;
 }
 
-const Input: React.FC<props> = ({ value, defaultValue, label, name, placeholder, type, className, min, max, onChange, onclick }) => (
+const Input: React.FC<props> = ({ value, defaultValue, label, name, placeholder, type, className, min, max, onChange, onclick, id, checked }) => (
     <div className="form-group">
       {label && <label htmlFor="input-field">{label}</label>}
       <input
+        id={id}
         type={type}
         value={value}
         name={name}
@@ -27,6 +30,7 @@ const Input: React.FC<props> = ({ value, defaultValue, label, name, placeholder,
         placeholder={placeholder}
         onChange={onChange}
         onClick={onclick}
+        checked={checked}
       />
     </div>
   );
