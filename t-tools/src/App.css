@@ -15,6 +15,17 @@
   align-items: center;
 }
 
+.flex-parent-center > form {
+  align-items: flex-start;
+}
+
+.flex-parent-start-column > label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .password-field {
   border-radius: 10px;
   width: 60%;

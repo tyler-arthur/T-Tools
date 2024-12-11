@@ -24,7 +24,7 @@ const generatePassword: any = (
     special = false,
     size = 12
 ) => {
-    if (!num && !lower && !upper && !special) throw new Error("You must select one type of character for your password");
+    if (!num && !lower && !upper && !special) return "You must select at least one type of character";
     
     const passwordSelectionArr: String[] = [];
 
