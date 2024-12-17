@@ -1,44 +1,42 @@
 import './App.css';
+import { useState, useEffect } from 'react';
 import Input from './components/Input';
-import generatePassword from './scripts/password-generator';
 import Button from './components/Button';
-import { useState } from 'react';
+import PasswordGenerator from './components/PasswordGenerator';
+import PassPhraseGenerator from './components/PassPhraseGenerator';
 
 function App() {
-  const [slider, setSlider] = useState<number | string>(12);
+  const [slider, setSlider] = useState<number>(12);
   const [password, setPassword] = useState<string>('');
-  const [checkLower, setCheckLower] = useState<boolean>(true);
-  const [checkUpper, setCheckUpper] = useState<boolean>(true);
-  const [checkNumber, setCheckNumber] = useState<boolean>(true);
-  const [checkSpecial, setCheckSpecial] = useState<boolean>(true);
+  const [passwordType, setPasswordType] = useState<string>('password')
 
   const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>): void => setSlider(parseInt(e.currentTarget.value, 10));
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>): void => setPassword(generatePassword(checkNumber, checkLower, checkUpper, checkSpecial, slider))
   const copyToClipboard = () => { navigator.clipboard.writeText(password) }
+  const handlePasswordTypeChange = (e: React.ChangeEvent<HTMLInputElement>): void => passwordType === 'password' ?
+    setPasswordType('passphrase') :
+    setPasswordType('password');
 
   return (
     <div className="App">
       <h1>Password Generator</h1>
+      <h3>{passwordType === 'password' ? 'Password' : 'Pass Phrase'}</h3>
+      <label className="switch">
+        <input type="checkbox" onChange={handlePasswordTypeChange} />
+        <span className="slider round"></span>
+      </label>
+      {passwordType === 'password' &&
+        <PasswordGenerator
+          slider={slider}
+          setPassword={setPassword}
+        />
+      }
+      {passwordType === 'passphrase' &&
+        <PassPhraseGenerator
+          slider={slider}
+          setPassword={setPassword}
+        />
+      }
       <Input className="input-slider" type="range" min={1} max={128} value={slider} label={`${slider}`} onChange={handleSliderChange} />
-      <form className="flex-parent-start-column">
-        <div className='flex-parent-center'>
-          <label htmlFor="lower">Lowercase Letters</label>
-          <Input id="lower" type="checkbox" checked={checkLower} onChange={() => setCheckLower(!checkLower)} />
-        </div>
-        <div className='flex-parent-center'>
-          <label htmlFor="upper">Uppercase Letters</label>
-          <Input id="upper" type="checkbox" checked={checkUpper} onChange={() => setCheckUpper(!checkUpper)} />
-        </div>
-        <div className='flex-parent-center'>
-          <label htmlFor="number">Numbers</label>
-          <Input id="number" type="checkbox" checked={checkNumber} onChange={() => setCheckNumber(!checkNumber)} />
-        </div>
-        <div className="flex-parent-center">
-          <label htmlFor="special">Special Characters</label>
-          <Input id="special" type="checkbox" checked={checkSpecial} onChange={() => setCheckSpecial(!checkSpecial)} />
-        </div>
-      </form>
-      <Button className='input-button' text='Generate Password' onclick={handlePasswordChange} />
       <div className='flex-parent-center'>
         <div className='password-field'>{password !== '' ? password : ''}</div>
       </div>
